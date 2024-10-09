@@ -3,21 +3,43 @@ package com.example.demo.controller;
 import com.example.demo.model.Student;
 import com.example.demo.service.StudentService;
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.RestTemplate;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 
-@RestController
+@Controller
 @RequestMapping("/api/v1/students")
 @AllArgsConstructor
 public class StudentController {
 
+    @Autowired
     private final StudentService service;
 
-    @RequestMapping
-    public List<Student> findAllStudent(){
-        return service.findAllStudent();
+
+//    @RequestMapping
+//    public List<Student> findAllStudent(Model model){
+//        return service.findAllStudent();
+//    }
+
+    @GetMapping
+    public String findAllStudent(Model model) {
+        List<Student> students = service.findAllStudent();
+        model.addAttribute("students", students);
+        return "index";
     }
+
+//    @GetMapping("/students")
+//    public ModelAndView studentsView(){
+//        List<Student> listStudents = service.findAllStudent();
+//        ModelAndView mav = new ModelAndView("index");
+//        mav.addObject("listStudents", listStudents);
+//        return mav;
+//    }
 
     @PostMapping("save_student")
     public Student saveStudent(@RequestBody Student student){

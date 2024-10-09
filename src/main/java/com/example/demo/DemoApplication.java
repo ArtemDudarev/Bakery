@@ -13,8 +13,6 @@ public class DemoApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(DemoApplication.class, args);
-//		AnnotationConfigApplicationContext app = new AnnotationConfigApplicationContext(DemoApplication.class);
-//		Arrays.stream(app.getBeanDefinitionNames()).forEach(System.out::println);
 	}
 
 }
