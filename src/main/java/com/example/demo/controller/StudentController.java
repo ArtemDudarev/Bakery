@@ -13,7 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 import java.util.List;
 
 @Controller
-@RequestMapping("/api/v1/students")
+@RequestMapping("/students")
 @AllArgsConstructor
 public class StudentController {
 
@@ -33,13 +33,6 @@ public class StudentController {
         return "index";
     }
 
-//    @GetMapping("/students")
-//    public ModelAndView studentsView(){
-//        List<Student> listStudents = service.findAllStudent();
-//        ModelAndView mav = new ModelAndView("index");
-//        mav.addObject("listStudents", listStudents);
-//        return mav;
-//    }
 
     @PostMapping("save_student")
     public Student saveStudent(@RequestBody Student student){
